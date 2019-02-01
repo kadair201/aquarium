@@ -13,8 +13,11 @@ public class SpawnScript : MonoBehaviour {
     public ChooseSpawnFishScript chooseSpawnFishScript;
     public AddFishScript addFishScript;
 
-	// Use this for initialization
-	void Start () {
+    // remember to apply this to fish other than red
+    public List<GameObject> fish = new List<GameObject>();
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -29,6 +32,7 @@ public class SpawnScript : MonoBehaviour {
         Fish1.name = "RedFish";
         Debug.Log(gameObject.name);
         addFishScript.numberOfFish++;
+        fish.Add(Fish1);
     }
 
     public void SpawnBlueFish()

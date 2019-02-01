@@ -1,17 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpdateMoneyScript : MonoBehaviour
 {
     public int totalMoney = 0;
-    int fishMoneyPer7;
+    
+    public Text coinsText;
+    public AddFishScript addFishScript;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        fishMoneyPer7 = gameObject.GetComponent<FishScript>().moneyPer7Secs;
         StartCoroutine(AddMoney());
+
+        totalMoney = 30;
+        coinsText.text = "Coins: " + totalMoney.ToString();
     }
 
     // Update is called once per frame
@@ -22,14 +28,14 @@ public class UpdateMoneyScript : MonoBehaviour
 
     IEnumerator AddMoney()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(6);
         Add();
     }
 
     void Add()
     {
-        totalMoney += fishMoneyPer7;
-        Debug.Log(totalMoney);
+        //totalMoney += fishMoneyPer7;
+        coinsText.text = "Coins: " + totalMoney.ToString();
 
         StartCoroutine(AddMoney());
     }
